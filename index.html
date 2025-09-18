@@ -73,33 +73,131 @@
     .icons a { display:inline-grid; place-items:center; width:36px; height:36px; border-radius:10px; border:1px solid rgba(148,163,184,.26); background: rgba(255,255,255,.04) }
     .search { display:flex; align-items:center; gap:10px; margin:10px 0 16px }
     .search input { flex:1; padding:10px 12px; border-radius:10px; border:1px solid rgba(148,163,184,.26); background: rgba(255,255,255,.04); color: var(--text) }
+      .pillnav{ display:flex; gap:8px; padding:6px; border-radius:999px; border:1px solid color-mix(in srgb, var(--muted) 26%, transparent); background: color-mix(in srgb, #fff 3%, transparent)}
+    .pillnav a{ padding:6px 10px; border-radius:999px; color: var(--text); opacity:.9; font-weight:600 }
+    .pillnav a:hover{ background: color-mix(in srgb, var(--accent) 16%, transparent); text-decoration:none }
+
+    /* HERO */
+    .hero{ border-bottom:1px solid color-mix(in srgb, var(--muted) 20%, transparent); background: radial-gradient(800px 400px at 80% -10%, rgba(167,139,250,.12), transparent 60%); }
+    .hero-grid{ display:grid; grid-template-columns: 1.2fr .8fr; gap:28px; align-items:center }
+    @media(max-width:900px){ .hero-grid{ grid-template-columns:1fr } }
+    .hero-title{ font-size: clamp(36px,6vw,64px); line-height:1.05; margin:22px 0 8px; letter-spacing:-.02em }
+    .hero-title .accent{ background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent }
+    .hero-sub{ font-size: clamp(14px,2.4vw,18px); color: color-mix(in srgb, var(--text) 86%, var(--muted)); margin:0 }
+    .hero-card{ background: var(--card); border:1px solid color-mix(in srgb, var(--muted) 22%, transparent); border-radius:18px; padding:18px; box-shadow: var(--shadow) }
+    .hero-stats{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px }
+    .hero-actions{ display:flex; gap:10px; flex-wrap:wrap }
+      /* Section look similar to Google Sites */
+    .section-title{ font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); display:flex; align-items:center; gap:10px; margin-bottom:14px }
+    .section-title::after{ content:""; height:1px; flex:1; background: color-mix(in srgb, var(--muted) 30%, transparent) }
+    .card{ backdrop-filter:saturate(120%) blur(2px) }
+    .hero{ padding: 18px 0 8px }
   </style>
 </head>
 <body>
   <header class="site">
-    <div class="container">
-      <div class="brand">
-        <div class="avatar" aria-hidden="true">FG</div>
-        <div style="flex:1">
-          <h1>Ferdi Güler</h1>
-          <div class="muted">Data Science & Bioinformatics • Machine Learning for Health • Drug Discovery</div>
+    <div class="container" style="padding-top:10px;padding-bottom:10px">
+      <div class="row" style="align-items:center; gap:14px">
+        <div style="display:flex; align-items:center; gap:12px">
+          <div class="avatar" id="avatarSlot" aria-hidden="true">FG</div>
+          <div>
+            <div style="font-weight:800; letter-spacing:-.01em">Ferdi Güler</div>
+            <div class="muted" style="font-size:12px">Data Science & Bioinformatics</div>
+          </div>
         </div>
-        <nav>
-          <a href="#about">About</a>
-          <a href="#education">Education</a>
-          <a href="#experience">Experience</a>
-          <a href="#publications">Publications</a>
-          <a href="#awards">Awards</a>
-          <a href="#certs">Certificates</a>
-          <a href="#contact">Contact</a>
+        <nav style="margin-left:auto">
+          <div class="pillnav" role="navigation" aria-label="Main">
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#publications">Publications</a>
+            <a href="#awards">Awards</a>
+            <a href="#certs">Certificates</a>
+            <a href="#contact">Contact</a>
+          </div>
         </nav>
-        <div class="toolbar" style="margin-left:12px">
+        <div class="toolbar">
           <button id="themeToggle" class="iconbtn" title="Toggle theme" aria-label="Toggle theme">🌗</button>
           <a class="iconbtn" href="#top" title="Scroll to top" aria-label="Top">⬆️</a>
         </div>
       </div>
     </div>
   </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <h1 class="hero-title">Ferdi <span class="accent">Güler</span></h1>
+          <p class="hero-sub">Machine Learning for Health · Omics Analytics · Computational Drug Discovery</p>
+          <div class="chips" style="margin-top:14px">
+            <span class="chip">Python</span>
+            <span class="chip">PyTorch</span>
+            <span class="chip">GNN</span>
+            <span class="chip">RNA‑Seq</span>
+            <span class="chip">XAI</span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-stats">
+            <div><div class="muted">Citations</div><div id="scholar-citations-hero">—</div></div>
+            <div><div class="muted">Location</div><div>Istanbul, TR</div></div>
+          </div>
+          <div class="hero-actions">
+            <a class="cta" href="mailto:ferdiiguler@gmail.com">Email me</a>
+            <a class="cta" href="#publications">View publications</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT ME -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="card" style="padding:20px">
+        <p>I am a Data Science and Software Engineering researcher with a strong focus on machine learning, bioinformatics, and computational biology. My academic path bridges statistics, computer science, and applied artificial intelligence, and I am passionate about developing explainable, data-driven methods that advance healthcare and biotechnology.</p>
+
+        <p>Currently, I am completing my M.Sc. in Data Science and Analysis (Statistics) at Giresun University, where my thesis “Disease Classification via Machine Learning on Health Data: Applications in RNA-Seq, Thyroid, and Skin Cancer” integrates multi-omics data, deep learning, and feature engineering. Parallelly, I pursue my M.Sc. in Software Engineering at Karadeniz Technical University, deepening my expertise in computational modeling and algorithm design.</p>
+
+        <p>My research has been published in peer-reviewed journals, including BMC Medical Informatics and Decision Making and the Journal of Clinical Practice & Research, with accepted works in Ordu University Journal of Science and Technology. I have also contributed book chapters on data mining and classification algorithms. My work has been recognized with a TÜBİTAK 1002A Grant (2025), supporting my project on RNA-Seq kidney carcinoma classification and gene selection.</p>
+
+        <p>I actively present my findings at international conferences (Proteomics Congress, Applied Statistics Congress) and continuously expand my skills through advanced training in multi-omics, spatial data, machine learning, and generative AI at institutes such as Compute Ontario and Max Delbrück Center.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOTTO -->
+  <section id="motto">
+    <div class="container">
+      <h2 class="section-title">Life Motto</h2>
+      <div class="card" style="padding:20px; text-align:center; font-style:italic">
+        <p>Never stop fighting until you arrive at your destined place — that is, the unique you. Have an aim in life, continuously acquire knowledge, work hard, and have perseverance to realize the great life.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSONAL STATEMENT -->
+  <section id="statement">
+    <div class="container">
+      <h2 class="section-title">Personal Statement</h2>
+      <div class="card" style="padding:20px">
+        <p>I bring 7+ years of multidisciplinary experience spanning software engineering, statistical modeling, and applied AI for healthcare and biological data. My skill set combines Python/R programming on HPC/Linux systems, deep learning frameworks, and machine learning pipelines with wet-lab data integration (RNA-Seq, omics, imaging).</p>
+
+        <p><strong>I specialize in:</strong></p>
+        <ul>
+          <li><strong>Bioinformatics & Omics:</strong> RNA-Seq pipelines, pathway enrichment, multi-omics integration</li>
+          <li><strong>Machine & Deep Learning:</strong> MLP, GNN, KAN, transfer learning, explainable AI</li>
+          <li><strong>Feature Engineering:</strong> Boruta, PCA, hybrid methods (BorAuto, BorXGBoost)</li>
+          <li><strong>Software & Data:</strong> Python, R, MATLAB, .NET, Java, SQL; Git & collaborative development</li>
+        </ul>
+
+        <p>My career vision is to design explainable, AI-driven systems that not only improve disease classification and biomarker discovery, but also translate into clinical and biotechnological applications. By merging my background in software engineering, statistics, and machine learning, I aim to contribute impactful solutions at the intersection of computational biology, health informatics, and drug discovery.</p>
+      </div>
+    </div>
+  </section>
 
   <main class="container" style="margin-top: 18px;">
     <div class="grid">
@@ -188,9 +286,10 @@
           </div>
           <div class="icons" style="display:flex; gap:10px; margin-top: 16px">
             <a href="https://scholar.google.com/citations?hl=en&user=lgDxRyUAAAAJ" target="_blank" rel="noopener" title="Google Scholar" aria-label="Google Scholar">📘</a>
-            <a href="https://orcid.org/" target="_blank" rel="noopener" title="ORCID" aria-label="ORCID">🧬</a>
-            <a href="https://www.linkedin.com/in/ferdiguler/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">🔗</a>
+            <a href="https://orcid.org/0009-0008-0425-8101" target="_blank" rel="noopener" title="ORCID" aria-label="ORCID">🧬</a>
+            <a href="https://www.researchgate.net/profile/Ferdi-Guler?ev=hdr_xprf" target="_blank" rel="noopener" title="ResearchGate" aria-label="ResearchGate">🧪</a>
             <a href="https://github.com/ferdiiguler" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">💻</a>
+            <a href="https://www.linkedin.com/in/ferdi-g%C3%BCler-14b17512a/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">🔗</a>
           </div>
         </section>
 
