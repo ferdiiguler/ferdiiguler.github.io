@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -66,6 +66,13 @@
     .cta { display:inline-block; padding:10px 14px; border-radius:12px; border:1px solid rgba(96,165,250,.35); background:rgba(96,165,250,.1); font-weight:600 }
     .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; color: #a5b4fc; }
     .pill { padding: 2px 8px; border-radius: 999px; font-size: 11px; border: 1px solid rgba(148,163,184,.22); color: #cbd5e1; }
+      [data-theme="light"]{ --bg:#f7fafc; --card:#ffffff; --muted:#64748b; --text:#0b1220; --accent:#2563eb; --accent-2:#7c3aed; --chip:#e5e7eb; --ring:rgba(37,99,235,.25); }
+    html, body { scroll-behavior:smooth; }
+    .toolbar { display:flex; gap:10px; align-items:center }
+    .iconbtn { display:inline-grid; place-items:center; width:38px; height:38px; border-radius:12px; border:1px solid rgba(148,163,184,.26); background: rgba(255,255,255,.04); cursor:pointer }
+    .icons a { display:inline-grid; place-items:center; width:36px; height:36px; border-radius:10px; border:1px solid rgba(148,163,184,.26); background: rgba(255,255,255,.04) }
+    .search { display:flex; align-items:center; gap:10px; margin:10px 0 16px }
+    .search input { flex:1; padding:10px 12px; border-radius:10px; border:1px solid rgba(148,163,184,.26); background: rgba(255,255,255,.04); color: var(--text) }
   </style>
 </head>
 <body>
@@ -86,6 +93,10 @@
           <a href="#certs">Certificates</a>
           <a href="#contact">Contact</a>
         </nav>
+        <div class="toolbar" style="margin-left:12px">
+          <button id="themeToggle" class="iconbtn" title="Toggle theme" aria-label="Toggle theme">🌗</button>
+          <a class="iconbtn" href="#top" title="Scroll to top" aria-label="Top">⬆️</a>
+        </div>
       </div>
     </div>
   </header>
@@ -107,6 +118,10 @@
             <span class="chip">RNA‑Seq</span>
             <span class="chip">ADMET</span>
           </div>
+          <p style="margin-top:14px">
+            <a class="cta" id="cvBtn" href="CV_FerdiGuler.pdf" download>Download CV →</a>
+            <span class="muted" style="margin-left:10px">(Upload <code>CV_FerdiGuler.pdf</code> to the repo root)</span>
+          </p>
           <p class="muted" style="margin-top:10px">This website is a single static HTML file. Deploy it on <span class="kbd">username.github.io</span> → Settings → Pages.</p>
         </section>
 
@@ -125,7 +140,12 @@
         <section id="publications" class="card">
           <div class="row" style="align-items:center">
             <h2 style="margin:0">Publications</h2>
-            <a class="cta" style="margin-left:auto" id="scholar-link" target="_blank" rel="noopener">View on Google Scholar →</a>
+            <div class="toolbar" style="margin-left:auto;gap:8px">
+              <div class="search" style="margin:0">
+                <input id="pubSearch" type="search" placeholder="Search title/venue/authors..." />
+              </div>
+              <a class="cta" id="scholar-link" target="_blank" rel="noopener">Google Scholar →</a>
+            </div>
           </div>
           <div class="muted" style="margin:6px 0 14px">Selected publications and book chapters. You can edit or extend the list in the <span class="kbd">DATA.publications</span> array.</div>
           <div id="pubs"></div>
@@ -166,9 +186,11 @@
               <div><code class="kbd">ferdiguler.github.io</code></div>
             </div>
           </div>
-          <div class="chips" style="margin-top: 16px">
-            <a class="chip" href="https://scholar.google.com/citations?hl=en&user=lgDxRyUAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
-            <a class="chip" href="mailto:ferdiiguler@gmail.com">Email</a>
+          <div class="icons" style="display:flex; gap:10px; margin-top: 16px">
+            <a href="https://scholar.google.com/citations?hl=en&user=lgDxRyUAAAAJ" target="_blank" rel="noopener" title="Google Scholar" aria-label="Google Scholar">📘</a>
+            <a href="https://orcid.org/" target="_blank" rel="noopener" title="ORCID" aria-label="ORCID">🧬</a>
+            <a href="https://www.linkedin.com/in/ferdiguler/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">🔗</a>
+            <a href="https://github.com/ferdiiguler" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">💻</a>
           </div>
         </section>
 
@@ -180,7 +202,7 @@
         <section id="contact" class="card">
           <h2>Contact</h2>
           <p>Open to collaborations in <em>multi‑omics ML</em>, <em>explainable AI</em>, and <em>computational drug discovery</em>. Please reach out via email.</p>
-          <p><a class="cta" href="mailto:ferdiiguler@gmail.com">Say hello →</a></p>
+          <p class="toolbar"><a class="cta" href="mailto:ferdiiguler@gmail.com">Say hello →</a><button id="printBtn" class="iconbtn" title="Print / Save PDF">🖨️</button></p>
         </section>
       </div>
     </div>
@@ -192,6 +214,8 @@
 
   <!-- ———————————————————————— DATA LAYER ———————————————————————— -->
   <script>
+    // Theme load
+    (function(){const t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();
   const DATA = {
     scholarUser: "lgDxRyUAAAAJ",
     profile: {
@@ -304,6 +328,13 @@
     const certs = DATA.certs.map(c => `<li>${c}</li>`).join("");
     $("#certs-list").innerHTML = certs;
 
+    // Publications search
+    const pubSearch=document.getElementById('pubSearch');
+    if(pubSearch){pubSearch.addEventListener('input',e=>{const q=e.target.value.toLowerCase();const items=[...document.querySelectorAll('#pubs .pub')];items.forEach(it=>{it.style.display=it.textContent.toLowerCase().includes(q)?'grid':'none';});});}
+
+    // Print / Save PDF
+    const printBtn=document.getElementById('printBtn'); if(printBtn){printBtn.addEventListener('click',()=>window.print());}
+
     // OPTIONAL: fetch Scholar citation count (best-effort; may be blocked by CORS). If blocked, just keeps placeholder.
     (async () => {
       try {
@@ -316,6 +347,12 @@
         // ignore if blocked
       }
     })();
+  </script>
+  <script>
+    // Theme toggle button (after DOM)
+    const tbtn=document.getElementById('themeToggle'); if(tbtn){tbtn.addEventListener('click',()=>{const cur=document.documentElement.getAttribute('data-theme');const next=cur==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',next);localStorage.setItem('theme',next);});}
+    // Optional avatar swap if avatar.jpg exists
+    fetch('avatar.jpg',{method:'HEAD'}).then(r=>{if(r.ok){const img=document.createElement('img');img.src='avatar.jpg';img.alt='Ferdi Güler';img.className='avatar';img.style.objectFit='cover';const old=document.querySelector('.avatar');old.replaceWith(img);}}).catch(()=>{});
   </script>
 </body>
 </html>
