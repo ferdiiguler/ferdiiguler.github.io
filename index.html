@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ferdi Güler — CV & Publications</title>
+  <meta name="description" content="Academic CV website for Ferdi Güler: education, experience, publications, awards, and contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19; /* deep navy */
+      --card: #111827; /* slate-900 */
+      --muted: #94a3b8; /* slate-400 */
+      --text: #e5e7eb; /* zinc-200 */
+      --accent: #60a5fa; /* blue-400 */
+      --accent-2: #a78bfa; /* violet-400 */
+      --chip: #1f2937; /* gray-800 */
+      --ring: rgba(96,165,250,.35);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 1200px at 85% -10%, rgba(96,165,250,.12), transparent 60%),
+                  radial-gradient(1000px 800px at 20% -20%, rgba(167,139,250,.10), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 980px; margin: 0 auto; padding: 24px; }
+    header.site {
+      position: sticky; top: 0; z-index: 20; backdrop-filter: saturate(120%) blur(8px);
+      background: linear-gradient(to bottom, rgba(11,15,25,.9), rgba(11,15,25,.4));
+      border-bottom: 1px solid rgba(96, 165, 250, .15);
+    }
+    .brand { display: flex; align-items: center; gap: 16px; padding: 12px 0; }
+    .avatar { width: 64px; height: 64px; border-radius: 16px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); display: grid; place-items: center; font-weight: 800; color: #0b0f19; box-shadow: 0 10px 30px -12px var(--ring); }
+    nav a { margin-right: 16px; font-weight: 600; color: var(--text); opacity: .9; }
+    nav a:hover { color: white; }
+    .grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } nav { display: none; } }
+    section.card {
+      background: linear-gradient(180deg, rgba(255,255,255,.02), transparent 28%), var(--card);
+      padding: 24px; border-radius: 18px; box-shadow: 0 10px 32px -18px rgba(0,0,0,.6);
+      border: 1px solid rgba(148,163,184,.12);
+    }
+    h1 { font-size: clamp(28px, 4vw, 42px); margin: 0; letter-spacing: -.02em; }
+    h2 { font-size: 20px; margin: 0 0 14px; letter-spacing: .02em; text-transform: uppercase; color: var(--muted); }
+    h3 { margin: 0; font-size: 18px; }
+    p { margin: 8px 0 0; color: #d1d5db; }
+    .muted { color: var(--muted); }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .chip { background: var(--chip); color: #cbd5e1; padding: 6px 10px; border-radius: 999px; font-size: 12px; border: 1px solid rgba(148,163,184,.22); }
+    .row { display: flex; justify-content: space-between; gap: 18px; }
+    .row + .row { margin-top: 12px; }
+    .item { flex: 1; }
+    .timeline { display: grid; gap: 16px; }
+    .entry { padding: 14px 0; border-bottom: 1px dashed rgba(148,163,184,.2); }
+    .entry:last-child { border: none; }
+    .pub { display: grid; gap: 4px; padding: 12px; border-radius: 12px; border: 1px solid rgba(148,163,184,.16); background: rgba(255,255,255,.01); }
+    footer { margin: 48px 0 24px; text-align: center; color: var(--muted); font-size: 14px; }
+    .cta { display:inline-block; padding:10px 14px; border-radius:12px; border:1px solid rgba(96,165,250,.35); background:rgba(96,165,250,.1); font-weight:600 }
+    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; color: #a5b4fc; }
+    .pill { padding: 2px 8px; border-radius: 999px; font-size: 11px; border: 1px solid rgba(148,163,184,.22); color: #cbd5e1; }
+  </style>
+</head>
+<body>
+  <header class="site">
+    <div class="container">
+      <div class="brand">
+        <div class="avatar" aria-hidden="true">FG</div>
+        <div style="flex:1">
+          <h1>Ferdi Güler</h1>
+          <div class="muted">Data Science & Bioinformatics • Machine Learning for Health • Drug Discovery</div>
+        </div>
+        <nav>
+          <a href="#about">About</a>
+          <a href="#education">Education</a>
+          <a href="#experience">Experience</a>
+          <a href="#publications">Publications</a>
+          <a href="#awards">Awards</a>
+          <a href="#certs">Certificates</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="margin-top: 18px;">
+    <div class="grid">
+      <!-- LEFT COLUMN -->
+      <div class="col">
+        <section id="about" class="card">
+          <h2>About</h2>
+          <p>Graduate researcher and lecturer focused on <strong>machine learning for health</strong>, <strong>omics analytics</strong>, and <strong>computational drug discovery</strong>. I build data‑driven pipelines (MLP, GNN, KAN), develop feature‑selection frameworks (Boruta, Autoencoder), and translate findings into clinical insights and tools.</p>
+          <div class="chips" aria-label="skills">
+            <span class="chip">Python</span>
+            <span class="chip">R</span>
+            <span class="chip">PyTorch</span>
+            <span class="chip">FastAPI</span>
+            <span class="chip">Graph Neural Networks</span>
+            <span class="chip">XAI</span>
+            <span class="chip">RNA‑Seq</span>
+            <span class="chip">ADMET</span>
+          </div>
+          <p class="muted" style="margin-top:10px">This website is a single static HTML file. Deploy it on <span class="kbd">username.github.io</span> → Settings → Pages.</p>
+        </section>
+
+        <section id="education" class="card">
+          <h2>Education</h2>
+          <div class="timeline" id="education-list">
+            <!-- Populated by JS from DATA below -->
+          </div>
+        </section>
+
+        <section id="experience" class="card">
+          <h2>Experience</h2>
+          <div class="timeline" id="experience-list"></div>
+        </section>
+
+        <section id="publications" class="card">
+          <div class="row" style="align-items:center">
+            <h2 style="margin:0">Publications</h2>
+            <a class="cta" style="margin-left:auto" id="scholar-link" target="_blank" rel="noopener">View on Google Scholar →</a>
+          </div>
+          <div class="muted" style="margin:6px 0 14px">Selected publications and book chapters. You can edit or extend the list in the <span class="kbd">DATA.publications</span> array.</div>
+          <div id="pubs"></div>
+        </section>
+
+        <section id="awards" class="card">
+          <h2>Awards & Grants</h2>
+          <div class="timeline" id="awards-list"></div>
+        </section>
+
+        <section id="certs" class="card">
+          <h2>Certificates & Courses</h2>
+          <ul id="certs-list" style="margin:0; padding-left: 18px"></ul>
+        </section>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="col">
+        <section class="card">
+          <h2>At a Glance</h2>
+          <div class="row">
+            <div class="item">
+              <div class="muted">Location</div>
+              <div>Istanbul, Türkiye</div>
+            </div>
+            <div class="item">
+              <div class="muted">Email</div>
+              <div><a href="mailto:ferdiiguler@gmail.com">ferdiiguler@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="item">
+              <div class="muted">Scholar</div>
+              <div><span class="pill">citations</span> <span id="scholar-citations">—</span></div>
+            </div>
+            <div class="item">
+              <div class="muted">GitHub Pages</div>
+              <div><code class="kbd">ferdiguler.github.io</code></div>
+            </div>
+          </div>
+          <div class="chips" style="margin-top: 16px">
+            <a class="chip" href="https://scholar.google.com/citations?hl=en&user=lgDxRyUAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+            <a class="chip" href="mailto:ferdiiguler@gmail.com">Email</a>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Talks & Conferences</h2>
+          <ul id="talks" style="margin:0; padding-left: 18px"></ul>
+        </section>
+
+        <section id="contact" class="card">
+          <h2>Contact</h2>
+          <p>Open to collaborations in <em>multi‑omics ML</em>, <em>explainable AI</em>, and <em>computational drug discovery</em>. Please reach out via email.</p>
+          <p><a class="cta" href="mailto:ferdiiguler@gmail.com">Say hello →</a></p>
+        </section>
+      </div>
+    </div>
+
+    <footer>
+      © <span id="year"></span> Ferdi Güler · Built with vanilla HTML/CSS · Hosted on GitHub Pages
+    </footer>
+  </main>
+
+  <!-- ———————————————————————— DATA LAYER ———————————————————————— -->
+  <script>
+  const DATA = {
+    scholarUser: "lgDxRyUAAAAJ",
+    profile: {
+      name: "Ferdi Güler",
+      title: "Data Science & Bioinformatics Researcher",
+      location: "Istanbul, Türkiye",
+      email: "ferdiiguler@gmail.com",
+    },
+    education: [
+      { school: "Giresun University — M.Sc., Data Science and Analysis (Statistics)", detail: "Thesis: Disease Classification via Machine Learning on Health Data: RNA‑Seq, Thyroid, Skin Cancer.", when: "Graduated: 13 Aug 2025" },
+      { school: "Karadeniz Technical University — B.Sc., Software Engineering", detail: "Thesis: Skin Cancer Classification with Transfer Learning.", when: "Graduated: 16 Jul 2023" },
+      { school: "Karadeniz Technical University — M.Sc., Software Engineering (ongoing)", detail: "Advisor: Assist. Prof. Sefa Aras.", when: "Expected Graduation: Aug 2027" }
+    ],
+    experience: [
+      { org: "Arel University", role: "Lecturer — Computer Programming", when: "2025", where: "Istanbul, Türkiye" },
+      { org: "ASE Barcelona (Erasmus+)", role: "IT & Data Analysis Intern", when: "2023", where: "Barcelona, Spain" },
+      { org: "Gordon Lodge (Work & Travel)", role: "Housekeeper & Server", when: "2022", where: "Wisconsin, USA" },
+      { org: "AIE Engineering (Erasmus+)", role: "IT & Data Analysis Intern", when: "2022", where: "Barcelona, Spain" },
+      { org: "Taşpınar Yazılım", role: "Software Applications Intern", when: "2022", where: "Trabzon, Türkiye" },
+      { org: "Abanoz Medya", role: "Web Programmer Intern", when: "2021", where: "Trabzon, Türkiye" },
+      { org: "Karadeniz Technical University", role: "Library Assistant (Part‑time)", when: "2020", where: "Trabzon, Türkiye" },
+      { org: "AIESEC", role: "Outgoing Global Volunteer", when: "2017", where: "Istanbul, Türkiye" },
+    ],
+    publications: [
+      { title: "Investigation of Binary and Multiclass Skin Cancer Classification Using Transfer Learning", venue: "Journal of Clinical Practice & Research 47(3):235", year: 2025, authors: "F. Güler, M. Ağraz" },
+      { title: "Thyroid Disease Classification using GAN and Kolmogorov–Arnold Networks (3‑class)", venue: "BMC Medical Informatics and Decision Making 25(1)", year: 2025, authors: "A. Topşir, F. Güler, E. Çetin, M.F. Burak, M. Ağraz" },
+      { title: "Forecasting the Tobacco Market in Türkiye with Artificial Neural Networks", venue: "The Black Sea Journal of Sciences 15(2):688–701", year: 2025, authors: "A. Topşir, F. Güler" },
+      { title: "Forecasting Hazelnut Market in Türkiye using DeepDenT", venue: "Ordu University Journal of Science and Technology (Accepted)", year: 2025, authors: "F. Güler, A.Y. Topşir" },
+      { title: "Explainable GNNs with Data Augmentation for RNA‑Seq Analysis", venue: "Computers in Biology and Medicine (Submitted)", year: 2025, authors: "F. Güler, M. Ağraz" },
+      { title: "Applied Data Mining Algorithms — Chapter 2: Data Preparation and Preprocessing", venue: "Kriter Publishing", year: 2025, authors: "F. Güler, A. Topşir" },
+      { title: "Applied Data Mining Algorithms — Chapter 3: Classification", venue: "Kriter Publishing", year: 2025, authors: "A. Topşir, F. Güler, M. Ağraz" }
+    ],
+    awards: [
+      { name: "TÜBİTAK 1002A — Short-Term Support Module", detail: "Project: ML/Deep Learning for KICH RNA‑Seq; PI: Assoc. Prof. Melih Ağraz; Budget: 100,000 TRY; Duration: 6 months.", year: 2025 },
+    ],
+    talks: [
+      { year: 2025, text: "6th International Applied Statistics Congress — XAI‑Enhanced Deep Learning for RNA‑Seq (MLP vs KAN)" },
+      { year: 2025, text: "7th International Proteomics Congress — GNNs Reveal DEGs in Synthetic RNA‑Seq" },
+      { year: 2024, text: "6th International Proteomics Congress — Classification of RNA‑Seq Data Using ML" },
+    ],
+    certs: [
+      "Compute Ontario Summer School 2025 — Bioinformatics (RNA‑seq, Pathway Enrichment, Long‑read) & Data Visualization in R",
+      "Compute Ontario Summer School 2025 — Data Prep for ML, ML, ANN, Scientific Visualization, AI Showcase",
+      "Max Delbrück Center 2025 — AI‑Assisted Data Analysis; Spatial Omics; Multi‑Omics Integration",
+      "Datacamp 2025 — Understanding ML/AI, LLM Concepts, Intro to ChatGPT",
+      "Workintech/Akbank/Microfon 2025 — Coding 101 with Generative AI",
+      "Aspire Institute 2023 — Online Leadership Course",
+      "Middle East Technical University 2021 — Artificial Intelligence I‑II",
+      "Istanbul Technical University 2016 — Marketing and Finance Summit",
+      "Turkish MoNE 2017 — Turkish Sign Language",
+    ]
+  };
+  </script>
+
+  <!-- ———————————————————————— RENDER SCRIPT ———————————————————————— -->
+  <script>
+    const $ = (sel) => document.querySelector(sel);
+    const $list = (sel) => document.querySelector(sel);
+
+    // Header dynamic link
+    $("#scholar-link").href = `https://scholar.google.com/citations?hl=en&user=${DATA.scholarUser}`;
+
+    // Footer year
+    $("#year").textContent = new Date().getFullYear();
+
+    // Education
+    const edu = DATA.education.map(e => `
+      <div class="entry">
+        <h3>${e.school}</h3>
+        <div class="muted">${e.when}</div>
+        <p>${e.detail}</p>
+      </div>`).join("");
+    $("#education-list").innerHTML = edu;
+
+    // Experience
+    const exp = DATA.experience.map(x => `
+      <div class="entry">
+        <h3>${x.org} — ${x.role}</h3>
+        <div class="muted">${x.where} · ${x.when}</div>
+      </div>`).join("");
+    $("#experience-list").innerHTML = exp;
+
+    // Publications (sorted desc by year)
+    const pubs = [...DATA.publications].sort((a,b)=> (b.year||0) - (a.year||0)).map(p => `
+      <article class="pub">
+        <div style="display:flex; gap:8px; align-items:center; justify-content:space-between">
+          <h3 style="margin:0;">${p.title}</h3>
+          <span class="pill">${p.year}</span>
+        </div>
+        <div class="muted">${p.authors}</div>
+        <div>${p.venue}</div>
+      </article>
+    `).join("");
+    $("#pubs").innerHTML = pubs;
+
+    // Awards
+    const awards = DATA.awards.map(a => `
+      <div class="entry">
+        <h3>${a.name} <span class="pill">${a.year}</span></h3>
+        <p>${a.detail}</p>
+      </div>
+    `).join("");
+    $("#awards-list").innerHTML = awards;
+
+    // Talks
+    const talks = DATA.talks.sort((a,b)=>b.year-a.year).map(t => `<li><strong>${t.year}</strong> — ${t.text}</li>`).join("");
+    $("#talks").innerHTML = talks;
+
+    // Certs
+    const certs = DATA.certs.map(c => `<li>${c}</li>`).join("");
+    $("#certs-list").innerHTML = certs;
+
+    // OPTIONAL: fetch Scholar citation count (best-effort; may be blocked by CORS). If blocked, just keeps placeholder.
+    (async () => {
+      try {
+        const res = await fetch(`https://r.jina.ai/http://scholar.google.com/citations?hl=en&user=${DATA.scholarUser}`);
+        const html = await res.text();
+        // very light scrape for the "Citations" total
+        const m = html.match(/Citations[^\d]*(\d+)/i);
+        if (m) { document.getElementById('scholar-citations').textContent = m[1]; }
+      } catch (e) {
+        // ignore if blocked
+      }
+    })();
+  </script>
+</body>
+</html>
